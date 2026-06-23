@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MJproject — Lokeren</title>
+<meta name="description" content="MJproject Lokeren. Bouw, renovatie, dakwerken, schoonmaak.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eceff4;--surface:#fff;--ink:#1b2430;--ink-soft:#55606e;--slate:#1f2937;--slate-2:#27374b;--muted:#9aa3b0;--accent:#ff6a4d;--accent-2:#ff8c63;--accent-soft:rgba(255,106,77,.12);--green:#34b27b;--line:rgba(255,255,255,.10);--line-d:rgba(27,36,48,.10);--shadow:0 18px 44px -20px rgba(27,36,48,.30);--shadow-sm:0 8px 22px -12px rgba(27,36,48,.22);--r:14px;--r-lg:24px;--pill:999px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+h1,h2,h3,.h2{font-family:"Sora",sans-serif}
+.topbar{height:5px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+header{position:sticky;top:0;z-index:50;background:rgba(236,239,244,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-d)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:18px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-mark{width:34px;height:34px;flex:none;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:var(--shadow-sm)}
+.logo-text{font-family:"Sora",sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;color:var(--ink)}
+.logo-text span{color:var(--accent)}
+.menu{display:flex;gap:28px;align-items:center}
+.menu a{color:var(--ink-soft);font-size:14.5px;font-weight:500;transition:color .2s}
+.menu a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:"Inter",sans-serif;font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:var(--pill);cursor:pointer;border:none;transition:transform .15s,background .2s}
+.btn-accent{background:var(--accent);color:#fff;box-shadow:0 10px 24px -10px rgba(255,106,77,.7)}
+.btn-accent:hover{background:#ff5638;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-d)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-light{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid var(--line)}
+.btn-light:hover{border-color:var(--accent);color:var(--accent-2)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang{appearance:none;font-family:"Inter",sans-serif;font-size:13.5px;font-weight:600;color:var(--ink);background:var(--surface);border:1.5px solid var(--line-d);border-radius:var(--pill);padding:9px 32px 9px 16px;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231b2430' stroke-width='2.5'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 13px center}
+.lang:hover{border-color:var(--accent)}
+.nav-toggle{display:none;background:var(--surface);border:1.5px solid var(--line-d);color:var(--ink);width:44px;height:42px;border-radius:14px;cursor:pointer;font-size:18px}
+.hero{position:relative;padding:92px 0 104px;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-160px;right:-120px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,77,.22),transparent 65%);z-index:0}
+.hero::after{content:"";position:absolute;bottom:-180px;left:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(31,41,55,.10),transparent 65%);z-index:0}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:7px 15px;border-radius:var(--pill);margin-bottom:24px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.hero h1{font-weight:800;font-size:clamp(40px,6.4vw,76px);line-height:1.02;letter-spacing:-.03em;color:var(--ink)}
+.hero h1 .y{color:var(--accent)}
+.hero p.lead{margin-top:22px;max-width:50ch;font-size:clamp(16px,2vw,18.5px);color:var(--ink-soft)}
+.hero-actions{display:flex;gap:13px;margin-top:34px;flex-wrap:wrap}
+.hero-photo{position:relative}
+.hero-photo img{width:100%;height:440px;object-fit:cover;border-radius:var(--r-lg);display:block;box-shadow:var(--shadow)}
+.photo-tag{position:absolute;left:16px;bottom:16px;background:rgba(27,36,48,.62);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:7px 13px;border-radius:var(--pill);backdrop-filter:blur(6px)}
+.hero-meta{display:flex;gap:14px;margin-top:54px;flex-wrap:wrap}
+.hero-meta div{flex:1;min-width:180px;background:var(--surface);border:1px solid var(--line-d);border-radius:var(--r);padding:16px 18px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);box-shadow:var(--shadow-sm)}
+.hero-meta strong{display:block;color:var(--ink);font-size:15px;font-weight:600;margin-top:5px;font-family:"Inter",sans-serif}
+.marquee{background:var(--slate);overflow:hidden;padding:2px 0}
+.marquee-track{display:flex;width:max-content;animation:scroll 38s linear infinite;will-change:transform}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.mq-group{display:flex;flex:none}
+.mq-group span{font-family:"Sora",sans-serif;font-weight:600;font-size:18px;color:rgba(255,255,255,.92);padding:15px 26px;display:inline-flex;align-items:center;gap:26px;white-space:nowrap}
+.mq-group span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.about{background:var(--surface)}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:54px;align-items:center}
+.about-copy p{color:var(--ink-soft);margin-top:16px;font-size:15.5px}
+.stats{display:flex;flex-direction:column;gap:16px}
+.stat{background:var(--bg);border:1px solid var(--line-d);border-radius:var(--r-lg);padding:22px 26px}
+.stat .num{font-family:"Sora",sans-serif;font-weight:800;font-size:clamp(32px,4vw,42px);line-height:1;letter-spacing:-.03em;color:var(--accent)}
+.stat .num span{color:var(--ink)}
+.stat .l{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.reviews{background:var(--slate)}
+.reviews .kicker{color:var(--accent-2)}
+.reviews .h2{color:#fff}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev{background:var(--slate-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 24px;display:flex;flex-direction:column;gap:16px}
+.stars{display:flex;gap:3px;color:var(--accent)}
+.stars svg{width:18px;height:18px}
+.rev p{color:#cfd4db;font-size:14.5px;line-height:1.65;flex:1}
+.rev .who{display:flex;align-items:center;gap:13px}
+.avatar{width:42px;height:42px;flex:none;border-radius:var(--pill);background:rgba(255,140,99,.16);color:var(--accent-2);display:flex;align-items:center;justify-content:center;font-family:"Sora",sans-serif;font-weight:700;font-size:14px}
+.rev .name{color:#fff;font-weight:600;font-size:14.5px}
+.rev .role{color:var(--muted);font-size:12.5px;margin-top:2px}
+section.block{padding:92px 0}
+.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:26px;margin-bottom:48px;flex-wrap:wrap}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.h2{font-weight:800;font-size:clamp(30px,4.4vw,48px);line-height:1.05;letter-spacing:-.025em;color:var(--ink)}
+.head-row p{max-width:42ch;color:var(--ink-soft);font-size:15px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+a.svc{display:block;background:var(--surface);border:1px solid var(--line-d);border-radius:var(--r-lg);padding:30px 26px;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s;color:inherit}
+a.svc:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.svc .badge{width:48px;height:48px;border-radius:15px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent);margin-bottom:20px}
+.svc .badge svg{width:24px;height:24px}
+.svc .num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);margin-bottom:6px}
+.svc h3{font-size:18.5px;font-weight:700;margin-bottom:9px;letter-spacing:-.01em}
+.svc p{font-size:14.5px;color:var(--ink-soft)}
+.card-go{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:var(--pill);background:var(--accent-soft);color:var(--accent);font-size:16px;margin-top:18px;transition:transform .2s,background .2s,color .2s}
+a.svc:hover .card-go{transform:translateX(4px);background:var(--accent);color:#fff}
+.feature{background:var(--surface)}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.feat-photo img{width:100%;height:420px;object-fit:cover;border-radius:var(--r-lg);display:block;box-shadow:var(--shadow)}
+.feat-copy p{color:var(--ink-soft);margin:16px 0 28px;max-width:46ch}
+.products{background:var(--slate)}
+.products .kicker{color:var(--accent-2)}
+.products .h2{color:#fff}
+.products .head-row p{color:#aeb7c4}
+.grid-prod{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+a.prod{display:flex;flex-direction:column;position:relative;background:var(--slate-2);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:transform .25s,box-shadow .25s;color:inherit}
+a.prod:hover{transform:translateY(-6px);box-shadow:0 22px 44px -18px rgba(0,0,0,.5)}
+.prod-vis{height:128px;position:relative;background:#16202c;overflow:hidden}
+.prod-vis svg{position:absolute;inset:0;width:100%;height:100%}
+.prod-go{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:var(--pill);background:rgba(255,140,99,.18);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;transition:transform .2s,background .2s;z-index:2}
+a.prod:hover .prod-go{background:var(--accent);transform:translateX(3px)}
+.prod-body{padding:20px 20px 24px}
+.prod-tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);background:rgba(255,140,99,.14);padding:4px 10px;border-radius:var(--pill)}
+.prod h3{font-size:16.5px;font-weight:700;margin:11px 0 8px;color:#fff;letter-spacing:-.01em}
+.prod p{font-size:13.5px;color:#9aa3b0}
+.pipe-board{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.col{background:var(--surface);border:1px solid var(--line-d);border-radius:var(--r-lg);display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow-sm)}
+.col-head{padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line-d)}
+.col-title{display:flex;align-items:center;gap:10px}
+.col-title .dot{width:10px;height:10px;border-radius:50%;flex:none}
+.col-title h3{font-size:14px;font-weight:700;letter-spacing:-.01em}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;background:var(--bg);color:var(--ink-soft);padding:3px 11px;border-radius:var(--pill)}
+.col[data-s="up"] .dot{background:var(--muted)}
+.col[data-s="go"] .dot{background:var(--accent)}
+.col[data-s="done"] .dot{background:var(--green)}
+.col-body{padding:16px;display:flex;flex-direction:column;gap:13px;flex:1}
+.job{background:var(--bg);border:1px solid var(--line-d);border-radius:16px;padding:15px 16px;transition:transform .2s,box-shadow .2s}
+.job:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.job .jcode{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.05em}
+.job h4{font-size:14.5px;font-weight:600;margin:7px 0 5px;letter-spacing:-.01em}
+.job .jmeta{font-size:12.5px;color:var(--ink-soft)}
+.progress{height:6px;background:#dfe3ea;border-radius:var(--pill);margin-top:11px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent);border-radius:var(--pill)}
+.col[data-s="done"] .progress i{background:var(--green)}
+.edit-note{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);text-align:center;margin-top:28px}
+.contact{background:var(--slate)}
+.contact .kicker{color:var(--accent-2)}
+.c-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:start}
+.c-lead{font-family:"Sora",sans-serif;font-weight:800;font-size:clamp(28px,4vw,46px);line-height:1.06;letter-spacing:-.025em;color:#fff}
+.c-lead .y{color:var(--accent)}
+.c-sub{color:#aeb7c4;margin-top:18px;max-width:42ch}
+.c-actions{margin-top:30px;display:flex;gap:13px;flex-wrap:wrap}
+.info-list{display:flex;flex-direction:column;gap:14px}
+.info{display:flex;gap:16px;padding:22px;background:var(--slate-2);border:1px solid var(--line);border-radius:var(--r-lg)}
+.info .ic{width:44px;height:44px;border-radius:13px;background:rgba(255,140,99,.14);display:flex;align-items:center;justify-content:center;color:var(--accent-2);flex:none}
+.info .ic svg{width:22px;height:22px}
+.info .lbl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.info .val{font-size:15.5px;font-weight:600;color:#fff;margin-top:3px}
+footer{background:#16202c;color:var(--muted);padding:32px 0}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;font-size:13.5px}
+.foot .logo-text{font-size:19px;color:#fff}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.dhero{position:relative;overflow:hidden;padding:68px 0 56px;background:var(--surface)}
+.dhero::before{content:"";position:absolute;top:-160px;right:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,77,.18),transparent 65%);z-index:0}
+.dhero .wrap{position:relative;z-index:2;max-width:920px}
+.crumbs{display:flex;align-items:center;gap:8px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);margin-bottom:26px}
+.crumbs a{color:var(--ink-soft)}
+.crumbs a:hover{color:var(--accent)}
+.crumbs .sep{opacity:.6}
+.dbadge{width:62px;height:62px;border-radius:18px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:var(--shadow-sm)}
+.dbadge svg{width:30px;height:30px}
+.dhero h1{font-family:"Sora",sans-serif;font-weight:800;font-size:clamp(36px,5.6vw,60px);line-height:1.03;letter-spacing:-.03em;color:var(--ink)}
+.dhero .lead{margin-top:18px;font-size:clamp(17px,2vw,20px);color:var(--ink);font-weight:500;max-width:50ch}
+.dhero .intro{margin-top:18px;font-size:16px;color:var(--ink-soft);max-width:64ch}
+.dactions{margin-top:30px;display:flex;gap:13px;flex-wrap:wrap}
+.incl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:30px}
+.incl-item{display:flex;align-items:center;gap:15px;background:var(--bg);border:1px solid var(--line-d);border-radius:var(--r-lg);padding:20px 22px}
+.incl-item .chk{width:38px;height:38px;flex:none;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center}
+.incl-item .chk svg{width:20px;height:20px}
+.incl-item .t{font-weight:600;font-size:15px;color:var(--ink)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:var(--surface);border:1px solid var(--line-d);border-radius:var(--r-lg);padding:24px 22px}
+.step .n{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);font-weight:600;letter-spacing:.06em}
+.step h4{font-size:16px;font-weight:700;margin:8px 0 6px;letter-spacing:-.01em}
+.step p{font-size:13.5px;color:var(--ink-soft)}
+.dcta{background:var(--slate);text-align:center}
+.dcta .h2{color:#fff}
+.dcta p{color:#aeb7c4;margin:14px auto 0;max-width:44ch}
+.dcta .dactions{justify-content:center;margin-top:28px}
+@media(max-width:920px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}.grid-prod{grid-template-columns:repeat(2,1fr)}
+  .pipe-board{grid-template-columns:1fr}.c-grid{grid-template-columns:1fr;gap:34px}
+  .hero-grid{grid-template-columns:1fr;gap:34px}.hero-photo{order:-1}.hero-photo img{height:280px}
+  .about-grid{grid-template-columns:1fr;gap:32px}.rev-grid{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr;gap:28px}.feat-photo img{height:280px}
+  .incl-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}
+  .menu{display:none}
+  .menu.open{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;background:var(--surface);padding:20px 24px;gap:18px;border-bottom:1px solid var(--line-d);box-shadow:var(--shadow)}
+  .nav-toggle{display:block}
+}
+@media(max-width:560px){.grid-4{grid-template-columns:1fr}.grid-prod{grid-template-columns:1fr}section.block{padding:62px 0}.hero{padding:60px 0 72px}.logo-text{font-size:20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo"><span class="logo-mark"></span><span class="logo-text">MJ<span>project</span></span></a>
+    <nav class="menu" id="menu">
+      <a href="index.html#hakkimizda" data-i18n="nav.about">Hakkımızda</a>
+      <a href="index.html#hizmetler" data-i18n="nav.services">Hizmetler</a>
+      <a href="index.html#urunler" data-i18n="nav.products">Ürünler</a>
+      <a href="index.html#projeler" data-i18n="nav.projects">Projeler</a>
+      <a href="index.html#iletisim" data-i18n="nav.contact">İletişim</a>
+      <a href="index.html#iletisim" class="btn btn-accent" data-i18n="nav.quote">Teklif Al</a>
+    </nav>
+    <div class="nav-right">
+      <select class="lang" id="lang" aria-label="Language">
+        <option value="tr">Türkçe</option><option value="en">English</option><option value="nl">Nederlands</option><option value="de">Deutsch</option><option value="fr">Français</option>
+      </select>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+<section class="dhero">
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="index.html" data-i18n="crumb.home">Ana sayfa</a><span class="sep">/</span>
+      <a href="index.html#hizmetler" data-i18n="crumb.services">Hizmetler</a><span class="sep">/</span>
+      <span data-i18n="d.title">—</span>
+    </div>
+    <div class="dbadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+    <h1 data-i18n="d.title">—</h1>
+    <p class="lead" data-i18n="d.lead">—</p>
+    <p class="intro" data-i18n="d.intro">—</p>
+    <div class="dactions">
+      <a href="index.html#iletisim" class="btn btn-accent" data-i18n="hero.cta1">Ücretsiz Teklif Al →</a>
+      <a href="index.html#hizmetler" class="btn btn-ghost" data-i18n="back">← Geri</a>
+    </div>
+  </div>
+</section>
+
+<section class="block feature">
+  <div class="wrap">
+    <div class="kicker" data-i18n="what">Neler dahil</div>
+    <h2 class="h2" data-i18n="d.title">—</h2>
+    <div class="incl-grid">
+      <div class="incl-item"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg></span><span class="t" data-i18n="d.i1"></span></div><div class="incl-item"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg></span><span class="t" data-i18n="d.i2"></span></div><div class="incl-item"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg></span><span class="t" data-i18n="d.i3"></span></div><div class="incl-item"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg></span><span class="t" data-i18n="d.i4"></span></div><div class="incl-item"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg></span><span class="t" data-i18n="d.i5"></span></div><div class="incl-item"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg></span><span class="t" data-i18n="d.i6"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head-row"><div><div class="kicker" data-i18n="how">Nasıl çalışıyoruz</div><h2 class="h2" data-i18n="svc.h2">—</h2></div></div>
+    <div class="steps"><div class="step"><div class="n">01</div><h4 data-i18n="step1.t"></h4><p data-i18n="step1.d"></p></div><div class="step"><div class="n">02</div><h4 data-i18n="step2.t"></h4><p data-i18n="step2.d"></p></div><div class="step"><div class="n">03</div><h4 data-i18n="step3.t"></h4><p data-i18n="step3.d"></p></div><div class="step"><div class="n">04</div><h4 data-i18n="step4.t"></h4><p data-i18n="step4.d"></p></div></div>
+  </div>
+</section>
+
+<section class="block dcta">
+  <div class="wrap">
+    <h2 class="h2" data-i18n="cta.h">Bu iş için teklif alın</h2>
+    <p data-i18n="cta.p">—</p>
+    <div class="dactions">
+      <a href="tel:+32000000000" class="btn btn-accent" data-i18n="con.call">Hemen Ara</a>
+      <a href="mailto:info@mjproject.be" class="btn btn-light" data-i18n="con.email">E-posta Gönder</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span class="logo-text">MJ<span style="color:var(--accent)">project</span></span>
+    <span data-i18n="foot.tagline">İnşaat · Renovasyon · Çatı · Temizlik — Lokeren, Belçika</span>
+    <span>© <span id="yr"></span> MJproject</span>
+  </div>
+</footer>
+<script>
+var I18N = {"tr": {"nav.about": "Hakkımızda", "nav.services": "Hizmetler", "nav.products": "Ürünler", "nav.projects": "Projeler", "nav.contact": "İletişim", "nav.quote": "Teklif Al", "hero.eyebrow": "Lokeren, Belçika", "hero.title": "Sağlam iş.<br><span class='y'>Temiz</span> teslim.", "hero.lead": "MJproject; kaba inşaattan renovasyona, çatı tamirinden temizliğe kadar her aşamada yanınızda. Tek bir ekiple başlayın, anahtar teslim bitirin.", "hero.cta1": "Ücretsiz Teklif Al →", "hero.cta2": "Hizmetleri Gör", "hero.phototag": "Sahada MJproject", "hero.m1label": "04 — Hizmet alanı", "hero.m1val": "İnşaat • Çatı • Temizlik", "hero.m2label": "04 — Ürün grubu", "hero.m2val": "Panel & kaplama", "hero.m3label": "Konum", "hero.m3val": "Lokeren, Belçika", "about.kicker": "// Hakkımızda", "about.h2": "Bizim hikâyemiz", "about.p1": "MJproject basit bir inançla büyüdü: bir iş, ancak mekân temiz, güvenli ve kullanıma hazır olduğunda biter. Lokeren'de küçük tamir işleriyle başlayan yolculuk; bugün inşaat, renovasyon, çatı ve temizlik alanında Doğu Flandre genelinde güvenilen bir isme dönüştü.", "about.p2": "Yıllar içinde yüzlerce ev, dükkân ve iş yerini teslim ettik — dürüst işçiliği modern malzemelerle birleştirerek. Projeniz hangi aşamada olursa olsun, ona kendi işimiz gibi yaklaşıyoruz.", "about.s1l": "Yıllık deneyim", "about.s2l": "Tamamlanan proje", "about.s3l": "Memnun müşteri", "rev.kicker": "// Yorumlar", "rev.h2": "Müşterilerimiz ne diyor", "rev1.text": "Dükkânımızı baştan aşağı yenilediler ve tertemiz, tam zamanında teslim ettiler. Ekip baştan sona profesyonel ve düzenliydi.", "rev1.role": "Dükkân sahibi, Lokeren", "rev2.text": "Çatımız yıllardır su yapıyordu. MJproject düzgün bir şekilde onardı, fiyat da gayet uygundu. Kesinlikle tavsiye ederim.", "rev2.role": "Ev sahibi, Sint-Niklaas", "rev3.text": "Restoranımız için soğuk oda kurdurduk. Temiz iş, iyi iletişim, hiç sürpriz yok.", "rev3.role": "Restoran işletmecisi, Gent", "svc.kicker": "// Hizmetler", "svc.h2": "Ne yapıyoruz", "svc.intro": "Projenizin her aşamasını tek elden yürütüyoruz.", "svc1.t": "Temizlik İşleri", "svc1.d": "İnşaat sonrası ve genel temizlik. Mekânı kullanıma hazır teslim ediyoruz.", "svc2.t": "İnşaat & Dekorasyon", "svc2.d": "İç mekân yenileme ve renovasyon. Eski mekânları yeniden hayata döndürüyoruz.", "svc3.t": "Çatı Tamir İşleri", "svc3.d": "Çatı onarımı, su yalıtımı ve bakım.", "svc4.t": "Kaba İnşaat İşleri", "svc4.d": "Temelden kaba yapıya. Standartlara uygun, dayanıklı inşaat.", "more": "Daha fazla bilgi", "feat.kicker": "// Renovasyon", "feat.h2": "Mekânınızı yeniden tasarlayalım", "feat.p": "Eski bir daireyi, ofisi ya da dükkânı baştan ele alıyoruz: yüzey hazırlığından son boyaya, asma tavandan duvar kaplamasına kadar.", "feat.btn": "Projenizi Konuşalım →", "prod.kicker": "// Satılan Ürünler", "prod.h2": "Malzeme & paneller", "prod.intro": "Uyguladığımız ya da satışını yaptığımız kaliteli yapı malzemeleri.", "prod1.tag": "Tavan", "prod1.t": "Metal Asma Tavan", "prod1.d": "Dayanıklı, modern metal asma tavan sistemleri.", "prod2.tag": "Yalıtım", "prod2.t": "Soğuk Oda Panelleri", "prod2.d": "Yüksek yalıtımlı soğuk oda panel sistemleri.", "prod3.tag": "Kaplama", "prod3.t": "Duvar Kağıdı", "prod3.d": "Geniş desen seçenekleriyle duvar kağıdı uygulaması.", "prod4.tag": "Panel", "prod4.t": "Fiber Elyaf Katkılı Duvar Panelleri", "prod4.d": "Fiber takviyeli, dayanıklı duvar panelleri.", "proj.kicker": "// Proje Takibi", "proj.h2": "İşlerin durumu", "proj.intro": "Başlayacak, devam eden ve tamamlanmış projeler.", "proj.up": "Başlayacak İşler", "proj.go": "Devam Eden İşler", "proj.done": "Tamamlanmış İşler", "job1.t": "Villa Çatı Yenileme", "job1.m": "Lokeren · Çatı · Yakında", "job2.t": "Mağaza İç Renovasyon", "job2.m": "Gent · Dekorasyon · Planlama", "job3.t": "Restoran Soğuk Oda Kurulumu", "job3.m": "Lokeren · Panel · %60", "job4.t": "Daire Asma Tavan & Boya", "job4.m": "Sint-Niklaas · Dekorasyon · %35", "job5.t": "Ofis Kaba İnşaat", "job5.m": "Lokeren · Kaba inşaat · Teslim edildi", "job6.t": "Depo Duvar Paneli Kaplama", "job6.m": "Antwerpen · Panel · Teslim edildi", "proj.note": "Buradaki projeler örnektir — kendi işlerinizle değiştirebilirsiniz.", "con.kicker": "// İletişim", "con.lead": "Projenizi <span class='y'>konuşalım.</span>", "con.sub": "Ücretsiz keşif ve teklif için bize ulaşın.", "con.call": "Hemen Ara", "con.email": "E-posta Gönder", "con.addrLabel": "Adres", "con.addrVal": "Lokeren, Belçika", "con.phoneLabel": "Telefon", "con.phoneVal": "[ Telefon numaranız ]", "con.emailLabel": "E-posta", "con.emailVal": "[ E-posta adresiniz ]", "foot.tagline": "İnşaat · Renovasyon · Çatı · Temizlik — Lokeren, Belçika", "crumb.home": "Ana sayfa", "crumb.services": "Hizmetler", "crumb.products": "Ürünler", "back": "← Geri", "what": "Neler dahil", "how": "Nasıl çalışıyoruz", "cta.h": "Bu iş için teklif alın", "cta.p": "Ücretsiz keşif ve fiyat teklifi için bize ulaşın.", "step1.t": "1. İletişim", "step1.d": "Bize telefon ya da e-posta ile ulaşın.", "step2.t": "2. Keşif", "step2.d": "Mekânı ücretsiz inceleriz ve ihtiyacı netleştiririz.", "step3.t": "3. Teklif", "step3.d": "Şeffaf, ayrıntılı fiyat teklifi sunarız.", "step4.t": "4. Uygulama", "step4.d": "İşi planında tamamlar, temiz teslim ederiz.", "d.title": "İnşaat & Dekorasyon", "d.lead": "İç mekân yenileme, dekorasyon ve renovasyon.", "d.intro": "Eski bir daireyi, ofisi ya da dükkânı baştan ele alıyoruz: yüzey hazırlığından son boyaya, asma tavandan duvar kaplamasına kadar. Tek ekip, anahtar teslim sonuç.", "d.i1": "Komple iç renovasyon", "d.i2": "Asma tavan & alçıpan", "d.i3": "Boya & dekoratif yüzeyler", "d.i4": "Duvar kağıdı & paneller", "d.i5": "Zemin kaplamaları", "d.i6": "Ofis ve dükkân yenileme"}, "en": {"nav.about": "About", "nav.services": "Services", "nav.products": "Products", "nav.projects": "Projects", "nav.contact": "Contact", "nav.quote": "Get a quote", "hero.eyebrow": "Lokeren, Belgium", "hero.title": "Solid work.<br><span class='y'>Clean</span> handover.", "hero.lead": "From structural building to renovation, roof repair to cleaning — MJproject is with you at every stage. Start with one team, finish turnkey.", "hero.cta1": "Get a free quote →", "hero.cta2": "See services", "hero.phototag": "MJproject on site", "hero.m1label": "04 — Service areas", "hero.m1val": "Building • Roofing • Cleaning", "hero.m2label": "04 — Product groups", "hero.m2val": "Panel & cladding", "hero.m3label": "Location", "hero.m3val": "Lokeren, Belgium", "about.kicker": "// About us", "about.h2": "Our story", "about.p1": "MJproject grew out of a simple belief: a job is only finished when the space is clean, safe and ready to use. What began with small repairs in Lokeren has become a trusted name across East Flanders for building, renovation, roofing and cleaning.", "about.p2": "Over the years we've handed over hundreds of homes, shops and workplaces — combining honest craftsmanship with modern materials. Whatever the stage of your project, we treat it as if it were our own.", "about.s1l": "Years of experience", "about.s2l": "Projects delivered", "about.s3l": "Satisfied customers", "rev.kicker": "// Reviews", "rev.h2": "What our customers say", "rev1.text": "They renovated our shop from top to bottom and delivered it spotless, right on schedule. The team was professional and tidy throughout.", "rev1.role": "Shop owner, Lokeren", "rev2.text": "Our roof had been leaking for years. MJproject fixed it properly and the price was fair. Highly recommended.", "rev2.role": "Homeowner, Sint-Niklaas", "rev3.text": "We had a cold room installed for our restaurant. Clean work, good communication, no surprises.", "rev3.role": "Restaurant owner, Ghent", "svc.kicker": "// Services", "svc.h2": "What we do", "svc.intro": "We manage every stage of your project from a single source.", "svc1.t": "Cleaning", "svc1.d": "Post-construction and general cleaning. We hand over the space ready to use.", "svc2.t": "Construction & Decoration", "svc2.d": "Interior renovation and decoration. We bring old spaces back to life.", "svc3.t": "Roof Repair", "svc3.d": "Roof repair, waterproofing and maintenance.", "svc4.t": "Structural Construction", "svc4.d": "From foundation to shell. Solid, durable building.", "more": "Learn more", "feat.kicker": "// Renovation", "feat.h2": "Let's redesign your space", "feat.p": "We take on an old apartment, office or shop from scratch: from surface prep to the final coat, from suspended ceilings to wall cladding.", "feat.btn": "Let's talk about your project →", "prod.kicker": "// Products", "prod.h2": "Materials & panels", "prod.intro": "Quality building materials we install or supply.", "prod1.tag": "Ceiling", "prod1.t": "Metal Suspended Ceiling", "prod1.d": "Durable, modern metal suspended ceiling systems.", "prod2.tag": "Insulation", "prod2.t": "Cold Room Panels", "prod2.d": "Highly insulated cold room panel systems.", "prod3.tag": "Cladding", "prod3.t": "Wallpaper", "prod3.d": "Professional wallpaper application with a wide range of patterns.", "prod4.tag": "Panel", "prod4.t": "Fibre-Reinforced Wall Panels", "prod4.d": "Durable, fibre-reinforced wall panels.", "proj.kicker": "// Project tracking", "proj.h2": "Status of works", "proj.intro": "Upcoming, ongoing and completed projects.", "proj.up": "Upcoming", "proj.go": "In progress", "proj.done": "Completed", "job1.t": "Villa Roof Renewal", "job1.m": "Lokeren · Roof · Starting soon", "job2.t": "Shop Interior Renovation", "job2.m": "Ghent · Decoration · In planning", "job3.t": "Restaurant Cold Room Install", "job3.m": "Lokeren · Panel · 60%", "job4.t": "Apartment Ceiling & Paint", "job4.m": "Sint-Niklaas · Decoration · 35%", "job5.t": "Office Structural Work", "job5.m": "Lokeren · Structural · Delivered", "job6.t": "Warehouse Wall Cladding", "job6.m": "Antwerp · Panel · Delivered", "proj.note": "These projects are examples — replace them with your own work.", "con.kicker": "// Contact", "con.lead": "Let's talk about <span class='y'>your project.</span>", "con.sub": "Get in touch for a free site visit and quote.", "con.call": "Call now", "con.email": "Send email", "con.addrLabel": "Address", "con.addrVal": "Lokeren, Belgium", "con.phoneLabel": "Phone", "con.phoneVal": "[ Your phone number ]", "con.emailLabel": "Email", "con.emailVal": "[ Your email address ]", "foot.tagline": "Construction · Renovation · Roofing · Cleaning — Lokeren, Belgium", "crumb.home": "Home", "crumb.services": "Services", "crumb.products": "Products", "back": "← Back", "what": "What's included", "how": "How we work", "cta.h": "Get a quote for this job", "cta.p": "Get in touch for a free visit and price quote.", "step1.t": "1. Contact", "step1.d": "Reach out by phone or email.", "step2.t": "2. Site visit", "step2.d": "We inspect the space for free and clarify the need.", "step3.t": "3. Quote", "step3.d": "We give you a transparent, detailed price.", "step4.t": "4. Execution", "step4.d": "We complete the work on schedule and hand it over clean.", "d.title": "Construction & Decoration", "d.lead": "Interior renovation, decoration and refit.", "d.intro": "We take on an old apartment, office or shop from scratch: from surface prep to the final coat, from suspended ceilings to wall cladding. One team, turnkey result.", "d.i1": "Full interior renovation", "d.i2": "Suspended ceilings & drywall", "d.i3": "Paint & decorative finishes", "d.i4": "Wallpaper & panels", "d.i5": "Floor coverings", "d.i6": "Office and shop refits"}, "nl": {"nav.about": "Over ons", "nav.services": "Diensten", "nav.products": "Producten", "nav.projects": "Projecten", "nav.contact": "Contact", "nav.quote": "Offerte aanvragen", "hero.eyebrow": "Lokeren, België", "hero.title": "Solide werk.<br><span class='y'>Netjes</span> opgeleverd.", "hero.lead": "Van ruwbouw tot renovatie, van dakreparatie tot schoonmaak — MJproject staat in elke fase naast u. Begin met één team, lever sleutelklaar op.", "hero.cta1": "Gratis offerte →", "hero.cta2": "Bekijk diensten", "hero.phototag": "MJproject op locatie", "hero.m1label": "04 — Werkgebieden", "hero.m1val": "Bouw • Dak • Schoonmaak", "hero.m2label": "04 — Productgroepen", "hero.m2val": "Panelen & bekleding", "hero.m3label": "Locatie", "hero.m3val": "Lokeren, België", "about.kicker": "// Over ons", "about.h2": "Ons verhaal", "about.p1": "MJproject is gegroeid vanuit een eenvoudige overtuiging: een klus is pas af als de ruimte schoon, veilig en gebruiksklaar is. Wat begon met kleine herstellingen in Lokeren, is uitgegroeid tot een vertrouwde naam in heel Oost-Vlaanderen voor bouw, renovatie, dakwerken en schoonmaak.", "about.p2": "In de loop der jaren hebben we honderden woningen, winkels en werkplekken opgeleverd — eerlijk vakmanschap gecombineerd met moderne materialen. In welke fase uw project zich ook bevindt, we behandelen het alsof het ons eigen project is.", "about.s1l": "Jaar ervaring", "about.s2l": "Opgeleverde projecten", "about.s3l": "Tevreden klanten", "rev.kicker": "// Beoordelingen", "rev.h2": "Wat onze klanten zeggen", "rev1.text": "Ze hebben onze winkel volledig gerenoveerd en spik en span opgeleverd, precies op tijd. Het team was van begin tot eind professioneel en netjes.", "rev1.role": "Winkeleigenaar, Lokeren", "rev2.text": "Ons dak lekte al jaren. MJproject heeft het degelijk hersteld en de prijs was correct. Echt een aanrader.", "rev2.role": "Huiseigenaar, Sint-Niklaas", "rev3.text": "We lieten een koelcel installeren voor ons restaurant. Net werk, goede communicatie, geen verrassingen.", "rev3.role": "Restauranthouder, Gent", "svc.kicker": "// Diensten", "svc.h2": "Wat we doen", "svc.intro": "Wij beheren elke fase van uw project vanuit één hand.", "svc1.t": "Schoonmaak", "svc1.d": "Schoonmaak na de bouw en algemene schoonmaak.", "svc2.t": "Bouw & Decoratie", "svc2.d": "Interieurrenovatie en decoratie.", "svc3.t": "Dakreparatie", "svc3.d": "Dakreparatie, waterdichting en onderhoud.", "svc4.t": "Ruwbouw", "svc4.d": "Van fundering tot ruwbouw.", "more": "Meer info", "feat.kicker": "// Renovatie", "feat.h2": "Laten we uw ruimte opnieuw ontwerpen", "feat.p": "We pakken een oude woning, kantoor of winkel volledig aan: van oppervlaktevoorbereiding tot de laatste verflaag.", "feat.btn": "Praat over uw project →", "prod.kicker": "// Producten", "prod.h2": "Materialen & panelen", "prod.intro": "Kwaliteitsvolle bouwmaterialen die we plaatsen of leveren.", "prod1.tag": "Plafond", "prod1.t": "Metalen Verlaagd Plafond", "prod1.d": "Duurzame, moderne metalen plafondsystemen.", "prod2.tag": "Isolatie", "prod2.t": "Koelcelpanelen", "prod2.d": "Sterk geïsoleerde panelen voor koelcellen.", "prod3.tag": "Bekleding", "prod3.t": "Behang", "prod3.d": "Professioneel behang plaatsen.", "prod4.tag": "Paneel", "prod4.t": "Vezelversterkte Wandpanelen", "prod4.d": "Duurzame wandpanelen versterkt met vezels.", "proj.kicker": "// Projectopvolging", "proj.h2": "Status van de werken", "proj.intro": "Geplande, lopende en afgeronde projecten.", "proj.up": "Geplande werken", "proj.go": "Lopende werken", "proj.done": "Afgeronde werken", "job1.t": "Dakvernieuwing Villa", "job1.m": "Lokeren · Dak · Start binnenkort", "job2.t": "Interieurrenovatie Winkel", "job2.m": "Gent · Decoratie · In planning", "job3.t": "Koelcel Restaurant", "job3.m": "Lokeren · Paneel · 60%", "job4.t": "Plafond & Schilderwerk Appartement", "job4.m": "Sint-Niklaas · Decoratie · 35%", "job5.t": "Ruwbouw Kantoor", "job5.m": "Lokeren · Ruwbouw · Opgeleverd", "job6.t": "Wandbekleding Magazijn", "job6.m": "Antwerpen · Paneel · Opgeleverd", "proj.note": "Deze projecten zijn voorbeelden — vervang ze door uw eigen werk.", "con.kicker": "// Contact", "con.lead": "Praten we over <span class='y'>uw project?</span>", "con.sub": "Neem contact op voor een gratis plaatsbezoek en offerte.", "con.call": "Bel nu", "con.email": "E-mail sturen", "con.addrLabel": "Adres", "con.addrVal": "Lokeren, België", "con.phoneLabel": "Telefoon", "con.phoneVal": "[ Uw telefoonnummer ]", "con.emailLabel": "E-mail", "con.emailVal": "[ Uw e-mailadres ]", "foot.tagline": "Bouw · Renovatie · Dak · Schoonmaak — Lokeren, België", "crumb.home": "Home", "crumb.services": "Diensten", "crumb.products": "Producten", "back": "← Terug", "what": "Wat is inbegrepen", "how": "Hoe we werken", "cta.h": "Vraag een offerte voor dit werk", "cta.p": "Neem contact op voor een gratis bezoek en prijsofferte.", "step1.t": "1. Contact", "step1.d": "Neem contact op via telefoon of e-mail.", "step2.t": "2. Plaatsbezoek", "step2.d": "We bekijken de ruimte gratis en bepalen de noden.", "step3.t": "3. Offerte", "step3.d": "U krijgt een transparante, gedetailleerde prijs.", "step4.t": "4. Uitvoering", "step4.d": "We werken volgens planning en leveren netjes op.", "d.title": "Bouw & Decoratie", "d.lead": "Interieurrenovatie, decoratie en herinrichting.", "d.intro": "We pakken een oude woning, kantoor of winkel volledig aan: van oppervlaktevoorbereiding tot de laatste verflaag, van verlaagde plafonds tot wandbekleding.", "d.i1": "Volledige binnenrenovatie", "d.i2": "Verlaagde plafonds & gipsplaten", "d.i3": "Schilderwerk & decoratieve afwerkingen", "d.i4": "Behang & panelen", "d.i5": "Vloerbedekking", "d.i6": "Kantoren en winkels"}, "de": {"nav.about": "Über uns", "nav.services": "Leistungen", "nav.products": "Produkte", "nav.projects": "Projekte", "nav.contact": "Kontakt", "nav.quote": "Angebot anfordern", "hero.eyebrow": "Lokeren, Belgien", "hero.title": "Solide Arbeit.<br><span class='y'>Saubere</span> Übergabe.", "hero.lead": "Vom Rohbau bis zur Renovierung, von der Dachreparatur bis zur Reinigung — MJproject steht Ihnen in jeder Phase zur Seite.", "hero.cta1": "Kostenloses Angebot →", "hero.cta2": "Leistungen ansehen", "hero.phototag": "MJproject vor Ort", "hero.m1label": "04 — Tätigkeitsfelder", "hero.m1val": "Bau • Dach • Reinigung", "hero.m2label": "04 — Produktgruppen", "hero.m2val": "Panel- & Verkleidung", "hero.m3label": "Standort", "hero.m3val": "Lokeren, Belgien", "about.kicker": "// Über uns", "about.h2": "Unsere Geschichte", "about.p1": "MJproject ist aus einer einfachen Überzeugung gewachsen: Ein Auftrag ist erst dann fertig, wenn der Raum sauber, sicher und nutzungsfertig ist. Was mit kleinen Reparaturen in Lokeren begann, ist heute in ganz Ostflandern ein vertrauter Name für Bau, Renovierung, Dacharbeiten und Reinigung.", "about.p2": "Über die Jahre haben wir Hunderte von Wohnungen, Geschäften und Arbeitsplätzen übergeben — ehrliches Handwerk verbunden mit modernen Materialien.", "about.s1l": "Jahre Erfahrung", "about.s2l": "Abgeschlossene Projekte", "about.s3l": "Zufriedene Kunden", "rev.kicker": "// Bewertungen", "rev.h2": "Was unsere Kunden sagen", "rev1.text": "Sie haben unser Geschäft komplett renoviert und blitzsauber übergeben, genau termingerecht. Das Team war von Anfang bis Ende professionell und ordentlich.", "rev1.role": "Geschäftsinhaber, Lokeren", "rev2.text": "Unser Dach war jahrelang undicht. MJproject hat es ordentlich repariert und der Preis war fair. Sehr zu empfehlen.", "rev2.role": "Hauseigentümerin, Sint-Niklaas", "rev3.text": "Wir haben einen Kühlraum für unser Restaurant einbauen lassen. Saubere Arbeit, gute Kommunikation, keine Überraschungen.", "rev3.role": "Restaurantbesitzer, Gent", "svc.kicker": "// Leistungen", "svc.h2": "Was wir tun", "svc.intro": "Wir betreuen jede Phase Ihres Projekts aus einer Hand.", "svc1.t": "Reinigung", "svc1.d": "Bauendreinigung und allgemeine Reinigung.", "svc2.t": "Bau & Dekoration", "svc2.d": "Innenrenovierung und Dekoration.", "svc3.t": "Dachreparatur", "svc3.d": "Dachreparatur, Abdichtung und Wartung.", "svc4.t": "Rohbau", "svc4.d": "Vom Fundament bis zum Rohbau.", "more": "Mehr erfahren", "feat.kicker": "// Renovierung", "feat.h2": "Gestalten wir Ihren Raum neu", "feat.p": "Wir nehmen uns einer alten Wohnung, eines Büros oder Ladens von Grund auf an.", "feat.btn": "Sprechen wir über Ihr Projekt →", "prod.kicker": "// Produkte", "prod.h2": "Materialien & Paneele", "prod.intro": "Hochwertige Baumaterialien, die wir montieren oder liefern.", "prod1.tag": "Decke", "prod1.t": "Metall-Abhangdecke", "prod1.d": "Langlebige, moderne Metall-Deckensysteme.", "prod2.tag": "Dämmung", "prod2.t": "Kühlraumpaneele", "prod2.d": "Hoch isolierte Paneele für Kühlräume.", "prod3.tag": "Verkleidung", "prod3.t": "Tapete", "prod3.d": "Professionelle Tapezierarbeiten.", "prod4.tag": "Paneel", "prod4.t": "Faserverstärkte Wandpaneele", "prod4.d": "Langlebige, faserverstärkte Wandpaneele.", "proj.kicker": "// Projektverfolgung", "proj.h2": "Status der Arbeiten", "proj.intro": "Geplante, laufende und abgeschlossene Projekte.", "proj.up": "Geplante Arbeiten", "proj.go": "Laufende Arbeiten", "proj.done": "Abgeschlossene Arbeiten", "job1.t": "Dachsanierung Villa", "job1.m": "Lokeren · Dach · Beginnt bald", "job2.t": "Innenrenovierung Geschäft", "job2.m": "Gent · Dekoration · In Planung", "job3.t": "Kühlraum Restaurant", "job3.m": "Lokeren · Paneel · 60%", "job4.t": "Decke & Anstrich Wohnung", "job4.m": "Sint-Niklaas · Dekoration · 35%", "job5.t": "Rohbau Büro", "job5.m": "Lokeren · Rohbau · Übergeben", "job6.t": "Wandverkleidung Lager", "job6.m": "Antwerpen · Paneel · Übergeben", "proj.note": "Diese Projekte sind Beispiele — ersetzen Sie sie durch Ihre eigenen Arbeiten.", "con.kicker": "// Kontakt", "con.lead": "Sprechen wir über <span class='y'>Ihr Projekt.</span>", "con.sub": "Kontaktieren Sie uns für einen kostenlosen Vor-Ort-Termin und ein Angebot.", "con.call": "Jetzt anrufen", "con.email": "E-Mail senden", "con.addrLabel": "Adresse", "con.addrVal": "Lokeren, Belgien", "con.phoneLabel": "Telefon", "con.phoneVal": "[ Ihre Telefonnummer ]", "con.emailLabel": "E-Mail", "con.emailVal": "[ Ihre E-Mail-Adresse ]", "foot.tagline": "Bau · Renovierung · Dach · Reinigung — Lokeren, Belgien", "crumb.home": "Startseite", "crumb.services": "Leistungen", "crumb.products": "Produkte", "back": "← Zurück", "what": "Was enthalten ist", "how": "So arbeiten wir", "cta.h": "Angebot für diesen Auftrag", "cta.p": "Kontaktieren Sie uns für einen kostenlosen Termin und ein Angebot.", "step1.t": "1. Kontakt", "step1.d": "Per Telefon oder E-Mail erreichbar.", "step2.t": "2. Besichtigung", "step2.d": "Kostenlose Begehung und Bedarfsklärung.", "step3.t": "3. Angebot", "step3.d": "Transparenter, detaillierter Preis.", "step4.t": "4. Ausführung", "step4.d": "Termingerechte, saubere Übergabe.", "d.title": "Bau & Dekoration", "d.lead": "Innenrenovierung, Dekoration und Umbau.", "d.intro": "Wir nehmen uns einer alten Wohnung, eines Büros oder Ladens von Grund auf an: von der Untergrundvorbereitung bis zum letzten Anstrich.", "d.i1": "Komplette Innenrenovierung", "d.i2": "Abgehängte Decken & Trockenbau", "d.i3": "Anstrich & dekorative Oberflächen", "d.i4": "Tapeten & Paneele", "d.i5": "Bodenbeläge", "d.i6": "Büros und Ladenumbau"}, "fr": {"nav.about": "À propos", "nav.services": "Services", "nav.products": "Produits", "nav.projects": "Projets", "nav.contact": "Contact", "nav.quote": "Demander un devis", "hero.eyebrow": "Lokeren, Belgique", "hero.title": "Travail solide.<br><span class='y'>Livraison</span> impeccable.", "hero.lead": "Du gros œuvre à la rénovation, de la réparation de toiture au nettoyage — MJproject vous accompagne à chaque étape.", "hero.cta1": "Devis gratuit →", "hero.cta2": "Voir les services", "hero.phototag": "MJproject sur le chantier", "hero.m1label": "04 — Domaines", "hero.m1val": "Bâtiment • Toiture • Nettoyage", "hero.m2label": "04 — Gammes de produits", "hero.m2val": "Panneaux & revêtements", "hero.m3label": "Localisation", "hero.m3val": "Lokeren, Belgique", "about.kicker": "// À propos", "about.h2": "Notre histoire", "about.p1": "MJproject est né d'une conviction simple : un chantier n'est terminé que lorsque l'espace est propre, sûr et prêt à l'emploi. Ce qui a commencé par de petites réparations à Lokeren est devenu une référence dans toute la Flandre-Orientale pour la construction, la rénovation, la toiture et le nettoyage.", "about.p2": "Au fil des années, nous avons livré des centaines de logements, commerces et espaces de travail — un savoir-faire honnête associé à des matériaux modernes.", "about.s1l": "Ans d'expérience", "about.s2l": "Projets livrés", "about.s3l": "Clients satisfaits", "rev.kicker": "// Avis", "rev.h2": "Ce que disent nos clients", "rev1.text": "Ils ont rénové notre magasin de fond en comble et l'ont livré impeccable, dans les délais. L'équipe a été professionnelle et soignée du début à la fin.", "rev1.role": "Commerçant, Lokeren", "rev2.text": "Notre toit fuyait depuis des années. MJproject l'a réparé correctement et le prix était juste. Vivement recommandé.", "rev2.role": "Propriétaire, Sint-Niklaas", "rev3.text": "Nous avons fait installer une chambre froide pour notre restaurant. Travail propre, bonne communication, aucune surprise.", "rev3.role": "Restaurateur, Gand", "svc.kicker": "// Services", "svc.h2": "Ce que nous faisons", "svc.intro": "Nous gérons chaque étape de votre projet.", "svc1.t": "Nettoyage", "svc1.d": "Nettoyage après travaux et nettoyage général.", "svc2.t": "Construction & Décoration", "svc2.d": "Rénovation intérieure et décoration.", "svc3.t": "Réparation de Toiture", "svc3.d": "Réparation, étanchéité et entretien de toiture.", "svc4.t": "Gros Œuvre", "svc4.d": "Des fondations au gros œuvre.", "more": "En savoir plus", "feat.kicker": "// Rénovation", "feat.h2": "Repensons votre espace", "feat.p": "Nous reprenons un appartement, un bureau ou un commerce de A à Z.", "feat.btn": "Parlons de votre projet →", "prod.kicker": "// Produits", "prod.h2": "Matériaux & panneaux", "prod.intro": "Des matériaux de construction de qualité que nous posons ou fournissons.", "prod1.tag": "Plafond", "prod1.t": "Plafond Suspendu Métallique", "prod1.d": "Systèmes de plafond suspendu métallique durables.", "prod2.tag": "Isolation", "prod2.t": "Panneaux de Chambre Froide", "prod2.d": "Panneaux haute isolation pour chambres froides.", "prod3.tag": "Revêtement", "prod3.t": "Papier Peint", "prod3.d": "Pose professionnelle de papier peint.", "prod4.tag": "Panneau", "prod4.t": "Panneaux Muraux Renforcés de Fibres", "prod4.d": "Panneaux muraux durables, renforcés de fibres.", "proj.kicker": "// Suivi de projet", "proj.h2": "État des travaux", "proj.intro": "Projets à venir, en cours et terminés.", "proj.up": "À venir", "proj.go": "En cours", "proj.done": "Terminés", "job1.t": "Rénovation Toiture Villa", "job1.m": "Lokeren · Toiture · Bientôt", "job2.t": "Rénovation Intérieure Magasin", "job2.m": "Gand · Décoration · En préparation", "job3.t": "Chambre Froide Restaurant", "job3.m": "Lokeren · Panneau · 60%", "job4.t": "Plafond & Peinture Appartement", "job4.m": "Sint-Niklaas · Décoration · 35%", "job5.t": "Gros Œuvre Bureau", "job5.m": "Lokeren · Gros œuvre · Livré", "job6.t": "Revêtement Mural Entrepôt", "job6.m": "Anvers · Panneau · Livré", "proj.note": "Ces projets sont des exemples — remplacez-les par vos propres réalisations.", "con.kicker": "// Contact", "con.lead": "Parlons de <span class='y'>votre projet.</span>", "con.sub": "Contactez-nous pour une visite et un devis gratuits.", "con.call": "Appeler", "con.email": "Envoyer un e-mail", "con.addrLabel": "Adresse", "con.addrVal": "Lokeren, Belgique", "con.phoneLabel": "Téléphone", "con.phoneVal": "[ Votre numéro de téléphone ]", "con.emailLabel": "E-mail", "con.emailVal": "[ Votre adresse e-mail ]", "foot.tagline": "Construction · Rénovation · Toiture · Nettoyage — Lokeren, Belgique", "crumb.home": "Accueil", "crumb.services": "Services", "crumb.products": "Produits", "back": "← Retour", "what": "Ce qui est inclus", "how": "Comment nous travaillons", "cta.h": "Obtenez un devis pour ce travail", "cta.p": "Contactez-nous pour une visite et un devis gratuits.", "step1.t": "1. Contact", "step1.d": "Joignez-nous par téléphone ou e-mail.", "step2.t": "2. Visite", "step2.d": "Visite gratuite et clarification des besoins.", "step3.t": "3. Devis", "step3.d": "Un prix transparent et détaillé.", "step4.t": "4. Réalisation", "step4.d": "Travail dans les délais, livraison impeccable.", "d.title": "Construction & Décoration", "d.lead": "Rénovation intérieure, décoration et aménagement.", "d.intro": "Nous reprenons un appartement, un bureau ou un commerce de A à Z : de la préparation des surfaces à la dernière couche.", "d.i1": "Rénovation intérieure complète", "d.i2": "Plafonds suspendus & cloisons sèches", "d.i3": "Peinture & finitions décoratives", "d.i4": "Papier peint & panneaux", "d.i5": "Revêtements de sol", "d.i6": "Aménagement bureaux et commerces"}};
+function setLang(l){
+  var d=I18N[l]||I18N.tr; document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n'); if(d[k]!=null) el.textContent=d[k];});
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){var k=el.getAttribute('data-i18n-html'); if(d[k]!=null) el.innerHTML=d[k];});
+  try{ localStorage.setItem('mj_lang', l); }catch(e){}
+  updateLinks(l);
+}
+function withLang(href,l){ if(!href) return href; var lower=href.toLowerCase(); if(lower.indexOf('.html')===-1) return href; if(lower.indexOf('http')===0 || lower.indexOf('mailto:')===0 || lower.indexOf('tel:')===0) return href; var hash='',h=href,hi=h.indexOf('#'); if(hi>=0){hash=h.slice(hi);h=h.slice(0,hi);} var qi=h.indexOf('?'); if(qi>=0) h=h.slice(0,qi); return h+'?lang='+l+hash; }
+function updateLinks(l){ document.querySelectorAll('a[href]').forEach(function(a){var href=a.getAttribute('href'); if(href && href.toLowerCase().indexOf('.html')!==-1) a.setAttribute('href',withLang(href,l));}); }
+function getLang(){
+  var m=location.search.match(/[?&]lang=([a-z]{2})/); if(m&&I18N[m[1]]) return m[1];
+  try{ var s=localStorage.getItem('mj_lang'); if(s&&I18N[s]) return s; }catch(e){}
+  return 'tr';
+}
+var sel=document.getElementById('lang'); var s=getLang(); sel.value=s; setLang(s);
+sel.addEventListener('change',function(e){ setLang(e.target.value); });
+document.getElementById('yr').textContent=new Date().getFullYear();
+var tgl=document.getElementById('navToggle'), mn=document.getElementById('menu');
+tgl.addEventListener('click',function(){ mn.classList.toggle('open'); });
+mn.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ mn.classList.remove('open'); }); });
+var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.14});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
